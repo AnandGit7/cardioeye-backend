@@ -3876,7 +3876,7 @@
             errorDiv.style.display = 'none';
 
             try {
-                const res = await fetch('http://localhost:5000/api/auth/login', {
+                const res = await fetch('https://web-production-5cf86.up.railway.app/api/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password, role: currentLoginRole })
@@ -3946,7 +3946,7 @@
             }
 
             try {
-                const res = await fetch('http://localhost:5000/api/auth/signup', {
+                const res = await fetch('https://web-production-5cf86.up.railway.app/api/auth/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
@@ -3980,7 +3980,7 @@
         function logout() {
             const token = localStorage.getItem('ce_token');
             if (token) {
-                fetch('http://localhost:5000/api/auth/logout', {
+                fetch('https://web-production-5cf86.up.railway.app/api/auth/logout', {
                     method: 'POST', headers: { 'Authorization': 'Bearer ' + token }
                 }).catch(() => {});
                 localStorage.removeItem('ce_token');
@@ -3996,7 +3996,7 @@
         function logoutDoctor() {
             const token = localStorage.getItem('ce_token');
             if (token) {
-                fetch('http://localhost:5000/api/auth/logout', {
+                fetch('https://web-production-5cf86.up.railway.app/api/auth/logout', {
                     method: 'POST', headers: { 'Authorization': 'Bearer ' + token }
                 }).catch(() => {});
                 localStorage.removeItem('ce_token');
