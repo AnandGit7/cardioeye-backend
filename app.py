@@ -99,7 +99,11 @@ def options_handler(p):
 # ─────────────────────────────────────────────────────────────────────────────
 @app.route("/")
 def serve_frontend():
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), "CardioEye.html")
+    resp = send_from_directory(os.path.dirname(os.path.abspath(__file__)), "CardioEye.html")
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 # ─────────────────────────────────────────────────────────────────────────────
 # AUTH HELPERS
