@@ -13,14 +13,14 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "cardioeye-dev-secret-20
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
 
 if DATABASE_URL:
-    import psycopg2
-    import psycopg2.extras
+    import pg8000.dbapi as psycopg2
+    import pg8000.dbapi as psycopg2.extras
     if DATABASE_URL.startswith("postgres://"):
         DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
     def get_db():
         if "db" not in g:
-            g.db = psycopg2.connect(DATABASE_URL, cursor_factory=psycopg2.extras.RealDictCursor)
+            g.db = psycopg2.connect(DATABASE_URL, )
         return g.db
 
     @app.teardown_appcontext
